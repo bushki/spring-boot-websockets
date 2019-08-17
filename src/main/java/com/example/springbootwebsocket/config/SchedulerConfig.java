@@ -1,5 +1,6 @@
 package com.example.springbootwebsocket.config;
 
+import com.example.springbootwebsocket.model.Greeting;
 import com.example.springbootwebsocket.model.UserResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -16,8 +17,8 @@ public class SchedulerConfig {
 
     @Scheduled(fixedDelay = 5000)
     public void sendAdhocMessages() {
-        template.convertAndSend("/topic/user",
-                new UserResponse("Scheduler"));
+        template.convertAndSend("/topic/greetings",
+                new Greeting("sent from Scheduler"));
 
     }
 }
